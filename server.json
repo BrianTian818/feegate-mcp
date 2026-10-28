@@ -3,12 +3,16 @@
   "name": "org.feegate/marketplace",
   "title": "Feegate AI Agent data marketplace catalog & platform metrics",
   "description": "Pay-per-call MCP data products listed on Feegate. Free discovery, x402 USDC paid queries on Base.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "websiteUrl": "https://feegate.org",
   "remotes": [
     {
       "type": "streamable-http",
       "url": "https://feegate.org/mcp"
     }
-  ]
+  ],
+  "repository": {
+    "url": "https://github.com/BrianTian818/feegate-mcp",
+    "source": "github"
+  }
 }
