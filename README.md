@@ -1,3 +1,5 @@
+[![M8ven Score](https://m8ven.ai/badge/mcp/briantian818/feegate-mcp)](https://m8ven.ai/mcp/briantian818/feegate-mcp?s=readme)
+
 # Feegate Marketplace MCP Server
 
 Official **Model Context Protocol** server of the [Feegate](https://feegate.org) data marketplace — listed in the [official MCP Registry](https://registry.modelcontextprotocol.io) as **`org.feegate/marketplace`**.
