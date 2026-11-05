@@ -1,4 +1,4 @@
-[![M8ven Score](https://m8ven.ai/badge/mcp/briantian818/feegate-mcp)](https://m8ven.ai/mcp/briantian818/feegate-mcp?s=readme)
+[![M8ven Score](https://m8ven.ai/badge/mcp/briantian818-feegate-mcp-y1f4cl?v=27dfd1222d1b7ccac78618deb1ed4281)](https://m8ven.ai/mcp/briantian818-feegate-mcp-y1f4cl?s=readme)
 
 # Feegate Marketplace MCP Server
 
