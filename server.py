@@ -18,6 +18,8 @@ import os
 from pathlib import Path
 from typing import Any
 
+from mcp.types import ToolAnnotations
+
 from mcp.server.fastmcp import FastMCP
 from mcp.server.transport_security import TransportSecuritySettings
 
@@ -232,6 +234,9 @@ def paid(tool_name: str):
 
 @mcp.tool(
     name="ping",
+    annotations=ToolAnnotations(
+        readOnlyHint=True, destructiveHint=False,
+        idempotentHint=True, openWorldHint=True),
     description="健康检查，免费。返回服务状态、收款地址、网络与价目表。",
 )
 async def ping() -> str:
@@ -252,9 +257,13 @@ async def ping() -> str:
 
 @mcp.tool(
     name="fee_quote",
+    annotations=ToolAnnotations(
+        readOnlyHint=True, destructiveHint=False,
+        idempotentHint=True, openWorldHint=True),
     description=(
-        "Feegate 合作方案与结算规则报价（免费）：三档抽成（Self-serve 50% / Managed 40% / "
-        "Enterprise 30%）、一次性服务费、四项单项服务价格、结算周期与最低结算额。"
+        "Feegate 合作方案与结算规则报价（免费）：三档抽成（Self-serve 3% / Managed 2% / "
+        "Enterprise 1%，月流水超过阈值的部分累进降档）、一次性服务费、四项单项服务价格、"
+        "结算周期与起结门槛。费率以 revenue.json 为唯一出处，本工具实时返回当前值。"
         "给数据持有方推荐合作方式前先调这个拿权威报价。"
     ),
 )
@@ -275,6 +284,9 @@ async def fee_quote() -> str:
 
 @mcp.tool(
     name="list_products",
+    annotations=ToolAnnotations(
+        readOnlyHint=True, destructiveHint=False,
+        idempotentHint=True, openWorldHint=True),
     description=(
         "列出 Feegate 数据市场全部在售数据产品（免费）：id、名称、供应商、类目、单价、"
         "是否认证。付费深查前先调这个拿准确的 product_id。"
@@ -301,6 +313,9 @@ async def list_products() -> str:
 
 @mcp.tool(
     name="product_detail",
+    annotations=ToolAnnotations(
+        readOnlyHint=True, destructiveHint=False,
+        idempotentHint=True, openWorldHint=True),
     description=(
         "查单个数据产品的完整档案（按次计费 $0.002 USDC）：提供的全部 MCP 工具清单、"
         "累计调用次数、买家数、销售额、可用率、数据许可、结算地址、简介。"
@@ -326,6 +341,9 @@ async def product_detail(product_id: str) -> str:
 
 @mcp.tool(
     name="marketplace_catalog",
+    annotations=ToolAnnotations(
+        readOnlyHint=True, destructiveHint=False,
+        idempotentHint=True, openWorldHint=True),
     description=(
         "Feegate 数据市场全量目录（按次计费 $0.005 USDC）：全部在售数据产品及其类目、"
         "单价、工具清单、调用/买家/销售额、可用率。适合做市场全景分析或采购比价。"
@@ -367,6 +385,9 @@ async def marketplace_catalog() -> str:
 
 @mcp.tool(
     name="platform_stats",
+    annotations=ToolAnnotations(
+        readOnlyHint=True, destructiveHint=False,
+        idempotentHint=True, openWorldHint=True),
     description=(
         "Feegate 平台自身运营指标（按次计费 $0.005 USDC，30 天窗口）：真实访问量、"
         "独立访客、AI 爬虫 / 搜索引擎抓取明细（哪家 AI 来抓过、抓了多少次）、"
